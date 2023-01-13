@@ -1,5 +1,4 @@
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -145,9 +144,53 @@ public class FileRead {
     
    
    // Returns the total number of lines in a file
-   
+
+    /**
+     * @param fileName
+     */
+   public void countNumLines(String fileName)
+   {
+       int linesCounted = 0;
+       try {
+           Scanner read = new Scanner(new FileReader(fileName));
+           while(read.hasNext()) {
+               read.nextLine();
+               linesCounted++;
+           }
+
+           System.out.println("Number of lines in file: " + linesCounted);
+
+           read.close();
+
+       } catch(IOException e) {
+           System.out.println(e);
+       }
+   }
    
    // Returns the total number of words in a file
+
+    /**
+     * @param fileName
+     */
+   public void countNumWords(String fileName)
+   {
+       int wordsCounted = 0;
+       try {
+           Scanner read = new Scanner(new FileReader(fileName));
+
+           while(read.hasNext()) {
+               read.next();
+               wordsCounted++;
+           }
+
+           System.out.println("Number of words in file: " + wordsCounted);
+
+           read.close();
+
+       } catch(IOException e) {
+           System.out.println(e);
+       }
+   }
    
    
    // Returns the total number of characters in a file

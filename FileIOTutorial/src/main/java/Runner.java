@@ -9,8 +9,10 @@ public class Runner {
         FileWrite writer = new FileWrite();
         FileDecrypter decrypt = new FileDecrypter();
         FileEncrypter encrypt = new FileEncrypter();
-        
-        
+
+        writer.writeNumbers("CountTo100.txt",true);
+        reader.countNumLines("AllWords.txt");
+        reader.countNumWords("AllWords.txt");
        
         
         

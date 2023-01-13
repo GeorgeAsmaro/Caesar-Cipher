@@ -13,6 +13,7 @@ public class Runner {
         writer.writeNumbers("CountTo100.txt",true);
         reader.countNumLines("AllWords.txt");
         reader.countNumWords("AllWords.txt");
+        System.out.println(reader.fileContains("AllWords.txt","testing"));
        
         
         

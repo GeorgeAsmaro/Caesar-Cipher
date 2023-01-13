@@ -197,7 +197,43 @@ public class FileRead {
    
    
    // Return if a file contains a certain word or phrase
+
+    /**
+     *
+     * @param fileName      Name of file being read
+     * @param phrase        Phrase to see if file contains it
+     * @return              Whether the file contains the phrase
+     */
+   public boolean fileContains(String fileName, String phrase) {
+       ArrayList<String> fileData = new ArrayList<>();
+
+       // Attempt to read from the generic file stored in 'allWordsFile' variable
+       try {
+           Scanner fileIn = new Scanner(new FileReader(fileName));
+
+           while(fileIn.hasNext())
+           {
+               String data = fileIn.next();
+
+               if(data.length() > 0) // Ignore any empty entries; only store meaningful data
+               {
+                   fileData.add(data);
+
+                   if(data.toLowerCase().contains(phrase.toLowerCase())) {
+                       return true;
+                   }
+               }
+           }
+
+           fileIn.close();
+
+       } catch(IOException e)
+       {
+           System.out.println(e);
+       }
+       return false;
+   }
    
-   
-   //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them)  
+   //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them)
+
 }

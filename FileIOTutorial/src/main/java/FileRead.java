@@ -191,6 +191,31 @@ public class FileRead {
            System.out.println(e);
        }
    }
+
+    /**
+     * @param fileName
+     * @param delimiter
+     */
+    public void countNumWords(String fileName, String delimiter)
+    {
+        int wordsCounted = 0;
+        try {
+            Scanner read = new Scanner(new FileReader(fileName));
+            read.useDelimiter(delimiter);
+
+            while(read.hasNext()) {
+                read.next();
+                wordsCounted++;
+            }
+
+            System.out.println("Number of words in file: " + wordsCounted);
+
+            read.close();
+
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
    
    
    // Returns the total number of characters in a file
@@ -235,5 +260,6 @@ public class FileRead {
    }
    
    //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them)
+
 
 }

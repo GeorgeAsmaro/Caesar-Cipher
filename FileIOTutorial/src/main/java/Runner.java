@@ -10,12 +10,12 @@ public class Runner {
         FileDecrypter decrypt = new FileDecrypter();
         FileEncrypter encrypt = new FileEncrypter();
 
-        writer.writeNumbersCustom("CountTo100.txt",false, "/");
+        writer.writeNumbers("CountTo100.txt",true);
         reader.countNumLines("CountTo100.txt");
-        reader.countNumWords("CountTo100.txt","/");
+        reader.countNumWords("CountTo100.txt");
         System.out.println(reader.fileContains("AllWords.txt","gonna"));
        
-        
+        writer.sortByLength("AllWords2.txt");
         
     }
     

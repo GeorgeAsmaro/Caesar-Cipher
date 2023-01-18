@@ -208,7 +208,7 @@ public class FileRead {
                 wordsCounted++;
             }
 
-            System.out.println("Number of words in file: " + wordsCounted);
+            System.out.println("Number of words in file: " + (wordsCounted -1));
 
             read.close();
 
@@ -232,7 +232,6 @@ public class FileRead {
    public boolean fileContains(String fileName, String phrase) {
        ArrayList<String> fileData = new ArrayList<>();
 
-       // Attempt to read from the generic file stored in 'allWordsFile' variable
        try {
            Scanner fileIn = new Scanner(new FileReader(fileName));
 
@@ -240,7 +239,7 @@ public class FileRead {
            {
                String data = fileIn.next();
 
-               if(data.length() > 0) // Ignore any empty entries; only store meaningful data
+               if(data.length() > 0)
                {
                    fileData.add(data);
 

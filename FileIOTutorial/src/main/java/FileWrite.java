@@ -191,11 +191,36 @@ public class FileWrite {
     
     
     // Create a method that can join 3 different file together
-    
+    public void mergeFiles(String fileOneName, String fileTwoName, String fileThreeName, String mergedFileName) {
+        FileRead fr = new FileRead();
+
+        ArrayList<String> fileOneData = fr.retrieveDataListFromFile(fileOneName);
+        ArrayList<String> fileTwoData = fr.retrieveDataListFromFile(fileTwoName);
+        ArrayList<String> fileThreeData = fr.retrieveDataListFromFile(fileThreeName);
+
+        fileOneData.addAll(fileTwoData);
+        fileOneData.addAll(fileThreeData);
+
+        FileWrite fw = new FileWrite();
+        fw.writeContentsToFile(mergedFileName,fileOneData,false);
+    }
     
     
     // Create a method that creates a new file with the contents of the ‘AllWords.txt’ file sorted by word length rather than alphabetically
-    
+    public void sortByLength(String fileName) {
+        FileRead fr = new FileRead();
+        FileWrite fw = new FileWrite();
+
+        ArrayList<String> fileData = fr.retrieveDataListFromFile(fileName);
+
+        for(String data : fileData) {
+            for(int i = 0; i < data.length(); i++) {
+                if(data.length() == i) {
+                    System.out.println(data);
+                }
+            }
+        }
+    }
     
     
     // Create a method that writes all sent data (either a String or a List) to a file with a common format decided by you

@@ -1,4 +1,5 @@
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -200,8 +201,7 @@ public class FileRead {
     {
         int wordsCounted = 0;
         try {
-            Scanner read = new Scanner(new FileReader(fileName));
-            read.useDelimiter(delimiter);
+            Scanner read = new Scanner(new FileReader(fileName)).useDelimiter(delimiter);
 
             while(read.hasNext()) {
                 read.next();
@@ -219,7 +219,9 @@ public class FileRead {
    
    
    // Returns the total number of characters in a file
-   
+   public void countNumChar(String fileName, String delimiter) {
+
+   }
    
    // Return if a file contains a certain word or phrase
 
@@ -257,8 +259,82 @@ public class FileRead {
        }
        return false;
    }
-   
-   //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them)
 
+    public boolean fileContains(String fileName, String phrase, String delimiter) {
+        ArrayList<String> fileData = new ArrayList<>();
+
+        try {
+            Scanner fileIn = new Scanner(new FileReader(fileName)).useDelimiter(delimiter);
+
+            while(fileIn.hasNext())
+            {
+                String data = fileIn.next();
+
+                if(data.length() > 0)
+                {
+                    fileData.add(data);
+
+                    if(data.toLowerCase().contains(phrase.toLowerCase())) {
+                        return true;
+                    }
+                }
+            }
+
+            fileIn.close();
+
+        } catch(IOException e)
+        {
+            System.out.println(e);
+        }
+        return false;
+    }
+   
+   //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them
+
+    /**
+     *
+     * @param fileName      Name of the file
+     * @param length        The length of the words to add
+     * @return              Returns the list of words containing that length
+     */
+    public ArrayList<String> certainLength(String fileName, int length) {
+        ArrayList<String> nextWord = new ArrayList<String>();
+
+        try {
+            Scanner fileIn = new Scanner(new File(fileName));
+
+            while(fileIn.hasNext()) {
+                String data = fileIn.next();
+
+                if(data.length() == length) {
+                    nextWord.add(data);
+                }
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
+        return nextWord;
+    }
+
+    public ArrayList<String> certainLength(String fileName, int length, String delimiter) {
+        ArrayList<String> nextWord = new ArrayList<String>();
+
+        try {
+            Scanner fileIn = new Scanner(new File(fileName)).useDelimiter(delimiter);
+
+            while(fileIn.hasNext()) {
+                String data = fileIn.next();
+
+                if(data.length() == length) {
+                    nextWord.add(data);
+                }
+            }
+        }
+        catch (IOException e) {
+            System.out.println(e);
+        }
+        return nextWord;
+    }
 
 }

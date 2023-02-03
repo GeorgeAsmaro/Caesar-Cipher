@@ -18,7 +18,7 @@ public class FileEncrypter {
     {
         String encodedString = "";
         
-        for(int i = 0; i < message.length(); i++) // Loop as many time as there are letters
+        for(int i = 0; i < message.length(); i++) // Loop as many times as there are letters
         {
             char tempChar = message.charAt(i); // Snag each character from the string one at a time
             

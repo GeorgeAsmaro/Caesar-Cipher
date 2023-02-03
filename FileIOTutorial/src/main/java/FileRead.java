@@ -47,7 +47,8 @@ public class FileRead {
             
             fileIn.close();
             
-        } catch(IOException e)
+        }
+        catch(IOException e)
         {
             System.out.println(e);
         }        
@@ -148,8 +149,9 @@ public class FileRead {
 
     /**
      * @param fileName
+     * @return
      */
-   public void countNumLines(String fileName)
+   public int countNumLines(String fileName)
    {
        int linesCounted = 0;
        try {
@@ -166,33 +168,10 @@ public class FileRead {
        } catch(IOException e) {
            System.out.println(e);
        }
+       return linesCounted;
    }
    
    // Returns the total number of words in a file
-
-    /**
-     * @param fileName
-     */
-   public void countNumWords(String fileName)
-   {
-       int wordsCounted = 0;
-       try {
-           Scanner read = new Scanner(new FileReader(fileName));
-
-           while(read.hasNext()) {
-               read.next();
-               wordsCounted++;
-           }
-
-           System.out.println("Number of words in file: " + wordsCounted);
-
-           read.close();
-
-       } catch(IOException e) {
-           System.out.println(e);
-       }
-   }
-
     /**
      * @param fileName
      * @param delimiter
@@ -216,11 +195,59 @@ public class FileRead {
             System.out.println(e);
         }
     }
+
+    public void countNumWords(String fileName)
+    {
+        int wordsCounted = 0;
+        try {
+            Scanner read = new Scanner(new FileReader(fileName));
+
+            while(read.hasNext()) {
+                read.next();
+                wordsCounted++;
+            }
+
+            System.out.println("Number of words in file: " + (wordsCounted));
+
+            read.close();
+
+        } catch(IOException e) {
+            System.out.println(e);
+        }
+    }
    
    
    // Returns the total number of characters in a file
-   public void countNumChar(String fileName, String delimiter) {
+    /**
+     * @param fileName
+     */
+   public void countNumChar(String fileName) {
+        ArrayList<String> words = new ArrayList<>();
+        int numChars = 0;
+        int n;
+        try {
 
+            Scanner fileIn = new Scanner(System.in);
+            FileReader fr = new FileReader(fileName);
+
+            while((n = fr.read()) != -1) {
+                numChars++;
+                char ch = (char) n;
+                System.out.println(ch);
+
+            }
+
+            int lines = countNumLines(fileName);
+
+            for(int i = 0; i < lines; i++) {
+                numChars -= 2;
+            }
+
+            System.out.println("Number of characters in file: " + numChars);
+        }
+        catch(IOException e) {
+            System.out.println(e);
+        }
    }
    
    // Return if a file contains a certain word or phrase
@@ -229,37 +256,9 @@ public class FileRead {
      *
      * @param fileName      Name of file being read
      * @param phrase        Phrase to see if file contains it
+     * @param delimiter     The delimiter
      * @return              Whether the file contains the phrase
      */
-   public boolean fileContains(String fileName, String phrase) {
-       ArrayList<String> fileData = new ArrayList<>();
-
-       try {
-           Scanner fileIn = new Scanner(new FileReader(fileName));
-
-           while(fileIn.hasNext())
-           {
-               String data = fileIn.next();
-
-               if(data.length() > 0)
-               {
-                   fileData.add(data);
-
-                   if(data.toLowerCase().contains(phrase.toLowerCase())) {
-                       return true;
-                   }
-               }
-           }
-
-           fileIn.close();
-
-       } catch(IOException e)
-       {
-           System.out.println(e);
-       }
-       return false;
-   }
-
     public boolean fileContains(String fileName, String phrase, String delimiter) {
         ArrayList<String> fileData = new ArrayList<>();
 
@@ -295,28 +294,9 @@ public class FileRead {
      *
      * @param fileName      Name of the file
      * @param length        The length of the words to add
+     * @param delimiter     The delimiter
      * @return              Returns the list of words containing that length
      */
-    public ArrayList<String> certainLength(String fileName, int length) {
-        ArrayList<String> nextWord = new ArrayList<String>();
-
-        try {
-            Scanner fileIn = new Scanner(new File(fileName));
-
-            while(fileIn.hasNext()) {
-                String data = fileIn.next();
-
-                if(data.length() == length) {
-                    nextWord.add(data);
-                }
-            }
-        }
-        catch (IOException e) {
-            System.out.println(e);
-        }
-        return nextWord;
-    }
-
     public ArrayList<String> certainLength(String fileName, int length, String delimiter) {
         ArrayList<String> nextWord = new ArrayList<String>();
 

@@ -215,8 +215,7 @@ public class FileRead {
             System.out.println(e);
         }
     }
-   
-   
+
    // Returns the total number of characters in a file
     /**
      * @param fileName
@@ -253,7 +252,6 @@ public class FileRead {
    }
    
    // Return if a file contains a certain word or phrase
-
     /**
      *
      * @param fileName      Name of file being read
@@ -291,7 +289,6 @@ public class FileRead {
     }
    
    //Create a method that returns a list that only includes words of a certain length (ex: all the words with 3 letters in them
-
     /**
      *
      * @param fileName      Name of the file
@@ -318,5 +315,4 @@ public class FileRead {
         }
         return nextWord;
     }
-
 }

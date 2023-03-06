@@ -222,8 +222,8 @@ public class FileRead {
      * @param fileName
      */
    public void countNumChar(String fileName) {
-        ArrayList<String> words = new ArrayList<>();
         int numChars = 0;
+        int lines = 0;
         int n;
         try {
 
@@ -233,17 +233,19 @@ public class FileRead {
             while((n = fr.read()) != -1) {
                 numChars++;
                 char ch = (char) n;
-                System.out.println(ch);
+
+                if (ch == '\n' || ch == '\r') {
+                    lines++;
+                }
 
             }
 
-            int lines = countNumLines(fileName);
-
-            for(int i = 0; i < lines; i++) {
-                numChars -= 2;
+            for(int i = lines; i > 0; i--) {
+                numChars--;
             }
 
             System.out.println("Number of characters in file: " + numChars);
+            fr.close();
         }
         catch(IOException e) {
             System.out.println(e);

@@ -14,7 +14,7 @@ public class Runner {
         reader.countNumLines("CountTo100.txt");
         reader.countNumWords("CountTo100.txt");
         reader.countNumChar("CountTo100.txt");
-        System.out.println(reader.fileContains("AllWords.txt","gonna", ""));
+        //System.out.println(reader.fileContains("AllWords.txt","gonna", ""));
        
         writer.sortByLength("AllWords2.txt");
         
